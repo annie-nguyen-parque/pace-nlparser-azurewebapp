@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Current Data</h1>
+
+<table>
+	<thead>
+		<tr>
+			<th style="width: 200px;">Name</th>
+			<th style="width: 200px;">City</th>
+			<th style="width: 200px;">Age</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		{% for student in students %}
+		<tr>
+			<td style="width: 200px;">{{ student.name }}</td>
+			<td style="width: 200px;">{{ student.city }}</td>
+			<td style="width: 200px;">{{ student.age }}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+
+{% endblock %}

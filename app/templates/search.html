@@ -6,19 +6,14 @@
 <p>Allow users to query the given data set using natural language.</p>
 
 <div>
-    <form method="POST" action="/query_data" enctype=multipart/form-data>
+  <form method="POST" action="/query_data" enctype=multipart/form-data>
     <div class="form-group">
-      <input
-        type="text"
-        name="board"
-        placeholder="How many students live in Sydney?"
-        class="form-control"
-        style="width: 900px"
-      />
+      <input type='text' name='query' , placeholder="Please enter your query here" , class='form-control' ,
+        style="width: 900px" />
     </div>
     <div>
       <button type="submit" class="btn btn-outline-secondary">Query</button>
     </div>
 </div>
-  
+
 {% endblock %}

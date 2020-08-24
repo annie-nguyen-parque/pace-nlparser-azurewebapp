@@ -4,5 +4,48 @@
 
 <!-- <h1>Seach Results</h1>
 <p>Display your search results here!</p> -->
-  
+
+<h1>Seach</h1>
+<p>Allow users to query the given data set using natural language.</p>
+
+<div>
+    <form method="POST" action="/query_data" enctype=multipart/form-data>
+        <div class="form-group">
+            <input type='text' name='query' , placeholder="Please enter your query here" , class='form-control' ,
+                style="width: 900px" />
+        </div>
+        <div>
+            <button type="submit" class="btn btn-outline-secondary">Query</button>
+        </div>
+</div>
+
+<h1>Result</h1>
+<table>
+    <thead>
+        <tr>
+            <th style="width: 200px;">Student ID</th>
+            <th style="width: 200px;">First Name</th>
+            <th style="width: 200px;">Last Name</th>
+            <th style="width: 200px;">Email</th>
+            <th style="width: 200px;">Gender</th>
+            <th style="width: 200px;">Major</th>
+            <th style="width: 200px;">University</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for student in students %}
+        <tr>
+            <td style="width: 200px;">{{ student[0] }}</td>
+            <td style="width: 200px;">{{ student[1] }}</td>
+            <td style="width: 200px;">{{ student[2] }}</td>
+            <td style="width: 200px;">{{ student[3] }}</td>
+            <td style="width: 200px;">{{ student[4] }}</td>
+            <td style="width: 200px;">{{ student[5] }}</td>
+            <td style="width: 200px;">{{ student[6] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
 {% endblock %}

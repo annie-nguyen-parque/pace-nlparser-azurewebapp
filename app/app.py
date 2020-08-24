@@ -2,6 +2,8 @@ import time, os
 from flask import Flask, render_template, flash, redirect, request, url_for
 from flask_sqlalchemy import SQLAlchemy
 import csv
+from DBConnector import retrieve_data, close_db_connection
+import psycopg2
 
 
 DBUSER = 'admin'
@@ -27,23 +29,39 @@ db = SQLAlchemy(app)
 
 
 class students(db.Model):
-    id = db.Column('student_id', db.Integer, primary_key=True)
-    name = db.Column(db.String(100))
-    city = db.Column(db.String(50))
-    age = db.Column(db.Integer())
+    __tablename__ = 'students'
+    student_id = db.Column(db.Integer, primary_key=True)
+    first_name = db.Column(db.String(100))
+    last_name = db.Column(db.String(100))
+    email = db.Column(db.String(100))
+    gender = db.Column(db.String(50))
+    major = db.Column(db.String(100))
+    university = db.Column(db.String(100))
 
-    def __init__(self, name, city, age):
-        self.name = name
-        self.city = city
-        self.age = age
+    def __init__(self, student_id, first_name, last_name, email, gender, major, university):
+        self.student_id = student_id
+        self.first_name = first_name
+        self.last_name = last_name
+        self.email = email
+        self.gender = gender
+        self.major = major
+        self.university = university
+
+
+def clear_data(session):
+    meta = db.metadata
+    for table in reversed(meta.sorted_tables):
+        print ('Clear table %s' % table)
+        session.execute(table.delete())
+    session.commit()
 
 
 def database_initialization_sequence():
     db.create_all()
-    with open('data/dummy_data.csv', 'r') as f:
+    with open('data/students.csv', 'r') as f:
         reader = csv.DictReader(f)
         for row in reader:
-            db.session.add(students(row['Name'], row['City'], row['Age']))        
+            db.session.add(students(row['student_id'], row['first_name'], row['last_name'], row['email'], row['gender'], row['major'], row['university']))        
 
     db.session.commit()
 
@@ -65,8 +83,12 @@ def query_data():
         # You can change the type of alert box displayed by changing the second argument according to Bootsrap's alert types:
         # https://getbootstrap.com/docs/4.3/components/alerts/
         flash('Hope this does something cool in the near future!', 'success')
+        
+        query = request.form.get('query')
+        result = retrieve_data(query)
+        
 
-        return render_template('query_data.html')
+        return render_template('query_data.html', students=result)
 
 
 @app.route('/data')
@@ -83,5 +105,9 @@ if __name__ == '__main__':
             time.sleep(2)
         else:
             dbstatus = True
+
+    clear_data(db.session)
     database_initialization_sequence()
+
     app.run(debug=True, host='0.0.0.0')
+    close_db_connection()

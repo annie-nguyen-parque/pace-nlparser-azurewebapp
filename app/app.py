@@ -1,9 +1,11 @@
-import time, os
+import time
+import os
 from flask import Flask, render_template, flash, redirect, request, url_for
 from flask_sqlalchemy import SQLAlchemy
 import csv
-from DBConnector import retrieve_data, close_db_connection
 import psycopg2
+from DBConnector import retrieve_data, close_db_connection
+import QueryParser
 
 
 DBUSER = 'admin'
@@ -11,7 +13,7 @@ DBPASS = 'supersecretpwd'
 DBHOST = 'db'
 DBPORT = '5432'
 DBNAME = 'testdb'
-
+con = None
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = \
@@ -51,7 +53,7 @@ class students(db.Model):
 def clear_data(session):
     meta = db.metadata
     for table in reversed(meta.sorted_tables):
-        print ('Clear table %s' % table)
+        print('Clear table %s' % table)
         session.execute(table.delete())
     session.commit()
 
@@ -61,7 +63,8 @@ def database_initialization_sequence():
     with open('data/students.csv', 'r') as f:
         reader = csv.DictReader(f)
         for row in reader:
-            db.session.add(students(row['student_id'], row['first_name'], row['last_name'], row['email'], row['gender'], row['major'], row['university']))        
+            db.session.add(students(row['student_id'], row['first_name'], row['last_name'],
+                                    row['email'], row['gender'], row['major'], row['university']))
 
     db.session.commit()
 
@@ -83,10 +86,17 @@ def query_data():
         # You can change the type of alert box displayed by changing the second argument according to Bootsrap's alert types:
         # https://getbootstrap.com/docs/4.3/components/alerts/
         flash('Hope this does something cool in the near future!', 'success')
-        
+
         query = request.form.get('query')
-        result = retrieve_data(query)
-        
+        #result = retrieve_data(con, query)
+        sql_query = QueryParser.create_query(query)
+        try:
+            result = retrieve_data(con, sql_query)
+        except:
+            try:
+                result = retrieve_data(query)
+            except:
+                result = "Doesn't work"
 
         return render_template('query_data.html', students=result)
 
@@ -98,6 +108,7 @@ def data():
 
 if __name__ == '__main__':
     dbstatus = False
+
     while dbstatus == False:
         try:
             db.create_all()
@@ -108,6 +119,7 @@ if __name__ == '__main__':
 
     clear_data(db.session)
     database_initialization_sequence()
-
+    con = psycopg2.connect(database="testdb", user="admin",
+                                    password="supersecretpwd", host="db", port="5432")
     app.run(debug=True, host='0.0.0.0')
-    close_db_connection()
+    close_db_connection(con)

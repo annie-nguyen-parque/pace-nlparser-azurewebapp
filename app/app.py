@@ -94,9 +94,11 @@ def query_data():
             result = retrieve_data(con, sql_query)
         except:
             try:
-                result = retrieve_data(query)
+                con.reset()
+                result = retrieve_data(con, query)
             except:
-                result = "Doesn't work"
+                con.reset()
+                result = "Invalid Query"
 
         return render_template('query_data.html', students=result)
 

@@ -1,0 +1,175 @@
+Major Code,Major,Major Category
+1100,General agriculture,Agriculture & Natural Resources
+1101,Agriculture production and management,Agriculture & Natural Resources
+1102,Agricultural economics,Agriculture & Natural Resources
+1103,Animal sciences,Agriculture & Natural Resources
+1104,Food science,Agriculture & Natural Resources
+1105,Plant science and agronomy,Agriculture & Natural Resources
+1106,Soil science,Agriculture & Natural Resources
+1199,Miscellaneous agriculture,Agriculture & Natural Resources
+1302,Forestry,Agriculture & Natural Resources
+1303,Natural resources management,Agriculture & Natural Resources
+6000,Fine arts,Arts
+6001,Drama and theater arts,Arts
+6002,Music,Arts
+6003,Visual and performing arts,Arts
+6004,Commercial art and graphic design,Arts
+6005,Film video and photographic arts,Arts
+6007,Studio arts,Arts
+6099,Miscellaneous fine arts,Arts
+1301,Environmental science,Biology & Life Science
+3600,Biology,Biology & Life Science
+3601,Biochemical sciences,Biology & Life Science
+3602,Botany,Biology & Life Science
+3603,Molecular biology,Biology & Life Science
+3604,Ecology,Biology & Life Science
+3605,Genetics,Biology & Life Science
+3606,Microbiology,Biology & Life Science
+3607,Pharmacology,Biology & Life Science
+3608,Physiology,Biology & Life Science
+3609,Zoology,Biology & Life Science
+3611,Neuroscience,Biology & Life Science
+3699,Miscellaneous biology,Biology & Life Science
+4006,Cognitive science and biopsychology,Biology & Life Science
+6200,General business,Business
+6201,Accounting,Business
+6202,Actuarial science,Business
+6203,Business management and administration,Business
+6204,Operations logistics and e-commerce,Business
+6205,Business economics,Business
+6206,Marketing and marketing research,Business
+6207,Finance,Business
+6209,Human resources and personnel management,Business
+6210,International business,Business
+6211,Hospitality management,Business
+6212,Management information systems and statistics,Business
+6299,Miscellaneous business & medical administration,Business
+1901,Communications,Communications & Journalism
+1902,Journalism,Communications & Journalism
+1903,Mass media,Communications & Journalism
+1904,Advertising and public relations,Communications & Journalism
+2001,Communication technologies,Computers & Mathematics
+2100,Computer and information systems,Computers & Mathematics
+2101,Computer programming and data processing,Computers & Mathematics
+2102,Computer science,Computers & Mathematics
+2105,Information sciences,Computers & Mathematics
+2106,Computer administration management and security,Computers & Mathematics
+2107,Computer networking and telecommunications,Computers & Mathematics
+3700,Mathematics,Computers & Mathematics
+3701,Applied mathematics,Computers & Mathematics
+3702,Statistics and decision science,Computers & Mathematics
+4005,Mathematics and computer science,Computers & Mathematics
+2300,General education,Education
+2301,Educational administration and supervision,Education
+2303,School student counseling,Education
+2304,Elementary education,Education
+2305,Mathematics teacher education,Education
+2306,Physical and health education teaching,Education
+2307,Early childhood education,Education
+2308,Science and computer teacher education,Education
+2309,Secondary teacher education,Education
+2310,Special needs education,Education
+2311,Social science or history teacher education,Education
+2312,Teacher education: multiple levels,Education
+2313,Language and drama education,Education
+2314,Art and music education,Education
+2399,Miscellaneous education,Education
+3501,Library science,Education
+1401,Architecture,Engineering
+2400,General engineering,Engineering
+2401,Aerospace engineering,Engineering
+2402,Biological engineering,Engineering
+2403,Architectural engineering,Engineering
+2404,Biomedical engineering,Engineering
+2405,Chemical engineering,Engineering
+2406,Civil engineering,Engineering
+2407,Computer engineering,Engineering
+2408,Electrical engineering,Engineering
+2409,Engineering mechanics physics and science,Engineering
+2410,Environmental engineering,Engineering
+2411,Geological and geophysical engineering,Engineering
+2412,Industrial and manufacturing engineering,Engineering
+2413,Materials engineering and materials science,Engineering
+2414,Mechanical engineering,Engineering
+2415,Metallurgical engineering,Engineering
+2416,Mining and mineral engineering,Engineering
+2417,Naval architecture and marine engineering,Engineering
+2418,Nuclear engineering,Engineering
+2419,Petroleum engineering,Engineering
+2499,Miscellaneous engineering,Engineering
+2500,Engineering technologies,Engineering
+2501,Engineering and industrial management,Engineering
+2502,Electrical engineering technology,Engineering
+2503,Industrial production technologies,Engineering
+2504,Mechanical engineering related technologies,Engineering
+2599,Miscellaneous engineering technologies,Engineering
+5008,Materials science,Engineering
+4002,Nutrition sciences,Health
+6100,General medical and health services,Health
+6102,Communication disorders sciences and services,Health
+6103,Health and medical administrative services,Health
+6104,Medical assisting services,Health
+6105,Medical technologies technicians,Health
+6106,Health and medical preparatory programs,Health
+6107,Nursing,Health
+6108,Pharmacy pharmaceutical sciences and administration,Health
+6109,Treatment therapy professions,Health
+6110,Community and public health,Health
+6199,Miscellaneous health medical professions,Health
+1501,Area ethnic and civilization studies,Humanities & Liberal Arts
+2601,Linguistics and comparative language and literature,Humanities & Liberal Arts
+2602,French german latin and other common foreign language studies,Humanities & Liberal Arts
+2603,Other foreign languages,Humanities & Liberal Arts
+3301,English language and literature,Humanities & Liberal Arts
+3302,Composition and rhetoric,Humanities & Liberal Arts
+3401,Liberal arts,Humanities & Liberal Arts
+3402,Humanities,Humanities & Liberal Arts
+4001,Intercultural and international studies,Humanities & Liberal Arts
+4801,Philosophy and religious studies,Humanities & Liberal Arts
+4901,Theology and religious vocations,Humanities & Liberal Arts
+5502,Anthropology and archeology,Humanities & Liberal Arts
+6006,Art history and criticism,Humanities & Liberal Arts
+6402,History,Humanities & Liberal Arts
+6403,United states history,Humanities & Liberal Arts
+2201,Cosmetology services and culinary arts,Industrial Arts & Consumer Services
+2901,Family and consumer sciences,Industrial Arts & Consumer Services
+3801,Military technologies,Industrial Arts & Consumer Services
+4101,Physical fitness parks recreation and leisure,Industrial Arts & Consumer Services
+5601,Construction services,Industrial Arts & Consumer Services
+5701,"Electrical, mechanical, and precision technologies and production",Industrial Arts & Consumer Services
+5901,Transportation sciences and technologies,Industrial Arts & Consumer Services
+4000,Multi/interdisciplinary studies,Interdisciplinary
+3201,Court reporting,Law & Public Policy
+3202,Pre-law and legal studies,Law & Public Policy
+5301,Criminal justice and fire protection,Law & Public Policy
+5401,Public administration,Law & Public Policy
+5402,Public policy,Law & Public Policy
+bbbb ,N/a (less than bachelor's degree),
+5000,Physical sciences,Physical Sciences
+5001,Astronomy and astrophysics,Physical Sciences
+5002,Atmospheric sciences and meteorology,Physical Sciences
+5003,Chemistry,Physical Sciences
+5004,Geology and earth science,Physical Sciences
+5005,Geosciences,Physical Sciences
+5006,Oceanography,Physical Sciences
+5007,Physics,Physical Sciences
+5098,Multi-disciplinary or general science,Physical Sciences
+5102,"Nuclear, industrial radiology, and biological technologies",Physical Sciences
+5200,Psychology,Psychology & Social Work
+5201,Educational psychology,Psychology & Social Work
+5202,Clinical psychology,Psychology & Social Work
+5203,Counseling psychology,Psychology & Social Work
+5205,Industrial and organizational psychology,Psychology & Social Work
+5206,Social psychology,Psychology & Social Work
+5299,Miscellaneous psychology,Psychology & Social Work
+5403,Human services and community organization,Psychology & Social Work
+5404,Social work,Psychology & Social Work
+4007,Interdisciplinary social sciences,Social Science
+5500,General social sciences,Social Science
+5501,Economics,Social Science
+5503,Criminology,Social Science
+5504,Geography,Social Science
+5505,International relations,Social Science
+5506,Political science and government,Social Science
+5507,Sociology,Social Science
+5599,Miscellaneous social sciences,Social Science

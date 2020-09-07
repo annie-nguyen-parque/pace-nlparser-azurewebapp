@@ -5,7 +5,6 @@ def retrieve_data(con, query):
     cur = con.cursor()
     cur.execute(query)
     rows = cur.fetchall()
-
     return rows
 
 # def format_results(self, results):

@@ -81,12 +81,14 @@ def create_query(str):
         elif(tag in value_collections.keys() and not condition):
             condition = value_collections[tag]+"'"+value+"'"
 
-    return stitch_query(column, condition)
+    return (stitch_query(column, condition),column.split(','))
 
 
 def stitch_query(column, condition):
+    column2 = ' Student_id,first_name '
     SELECT = 'SELECT '
     FROM = ' FROM Students '
     WHERE = 'WHERE '
+    
+    return  SELECT + column + FROM + WHERE + condition
 
-    return SELECT + column + FROM + WHERE + condition

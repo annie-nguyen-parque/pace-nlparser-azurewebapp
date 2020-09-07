@@ -6,6 +6,20 @@ import csv
 import psycopg2
 from DBConnector import retrieve_data, close_db_connection
 import QueryParser
+#looks legit
+from sqlalchemy.dialects import postgresql
+from sqlalchemy.dialects.postgresql import *
+
+#looks legit second
+from  sqlalchemy import Table, Column, Integer, String, MetaData
+MetaData = MetaData()
+from sqlalchemy.orm import mapper
+
+#maybe
+from sqlalchemy import cast, select, String
+import warnings
+
+
 
 
 DBUSER = 'admin'
@@ -50,6 +64,7 @@ class students(db.Model):
         self.university = university
 
 
+
 def clear_data(session):
     meta = db.metadata
     for table in reversed(meta.sorted_tables):
@@ -60,7 +75,7 @@ def clear_data(session):
 
 def database_initialization_sequence():
     db.create_all()
-    with open('data/students.csv', 'r') as f:
+    with open('data/top_students.csv', 'r') as f:
         reader = csv.DictReader(f)
         for row in reader:
             db.session.add(students(row['student_id'], row['first_name'], row['last_name'],
@@ -85,20 +100,26 @@ def query_data():
         # Flash messages can be useful when the user interacts with the tool - i.e. success and error messages.
         # You can change the type of alert box displayed by changing the second argument according to Bootsrap's alert types:
         # https://getbootstrap.com/docs/4.3/components/alerts/
-        flash('Hope this does something cool in the near future!', 'success')
+        
+        #flash('Hope this does something cool in the near future!', 'success')
 
         query = request.form.get('query')
-        #result = retrieve_data(con, query)
-        sql_query = QueryParser.create_query(query)
+
+        #headerResult: [0] - The query generated from QueryParser, [1] The list of column names to use as Headers in top row
+        headerResult = QueryParser.create_query(query) 
+        sql_query = headerResult[0]
+        list = headerResult[1]
         try:
             result = retrieve_data(con, sql_query)
+            result.insert(0, list)
         except:
             try:
                 con.reset()
                 result = retrieve_data(con, query)
             except:
                 con.reset()
-                result = "Invalid Query"
+                result = " "
+                flash('Invalid Query, Soz', 'danger')
 
         return render_template('query_data.html', students=result)
 

@@ -5,7 +5,7 @@
 <!-- <h1>Seach Results</h1>
 <p>Display your search results here!</p> -->
 
-<h1>Seach</h1>
+<h1>Search</h1>
 <p>Allow users to query the given data set using natural language.</p>
 
 <div>
@@ -20,9 +20,10 @@
 </div>
 
 <h1>Result</h1>
-<table>
+
+<table class = "table-responsive">
     <thead>
-        <tr>
+        <!--
             <th style="width: 200px;">Student ID</th>
             <th style="width: 200px;">First Name</th>
             <th style="width: 200px;">Last Name</th>
@@ -30,7 +31,7 @@
             <th style="width: 200px;">Gender</th>
             <th style="width: 200px;">Major</th>
             <th style="width: 200px;">University</th>
-        </tr>
+        -->
     </thead>
 
     <tbody>
@@ -47,5 +48,23 @@
         {% endfor %}
     </tbody>
 </table>
+
+<script>
+    function addRow(tableID) {
+        var table = '';
+        var rows = 2;
+        var cols = 3;
+        for(var i = 0; r < rows; r++) {
+            table+= '<tr>';
+            for (var c = 1; c <= cols; c++) {
+                table += '<td>' + c + '</td>';
+
+            }
+        table+= '</tr';
+        }
+    document.write('<table>' + table + '</table>')
+    }
+</script>
+
 
 {% endblock %}

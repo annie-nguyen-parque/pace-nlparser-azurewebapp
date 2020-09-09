@@ -21,9 +21,9 @@
 
 <h1>Result</h1>
 
-<table class = "table-responsive">
-    <thead>
-        <!--
+<table class="table-responsive">
+    <!-- <thead>
+        <tr>
             <th style="width: 200px;">Student ID</th>
             <th style="width: 200px;">First Name</th>
             <th style="width: 200px;">Last Name</th>
@@ -31,19 +31,15 @@
             <th style="width: 200px;">Gender</th>
             <th style="width: 200px;">Major</th>
             <th style="width: 200px;">University</th>
-        -->
-    </thead>
+        </tr>
+    </thead> -->
 
     <tbody>
-        {% for student in students %}
+        {% for result in results %}
         <tr>
-            <td style="width: 200px;">{{ student[0] }}</td>
-            <td style="width: 200px;">{{ student[1] }}</td>
-            <td style="width: 200px;">{{ student[2] }}</td>
-            <td style="width: 200px;">{{ student[3] }}</td>
-            <td style="width: 200px;">{{ student[4] }}</td>
-            <td style="width: 200px;">{{ student[5] }}</td>
-            <td style="width: 200px;">{{ student[6] }}</td>
+            {% for cell in result %}
+            <td style="width: 200px;">{{ cell }}</td>
+            {% endfor %}
         </tr>
         {% endfor %}
     </tbody>
@@ -54,15 +50,15 @@
         var table = '';
         var rows = 2;
         var cols = 3;
-        for(var i = 0; r < rows; r++) {
-            table+= '<tr>';
+        for (var i = 0; r < rows; r++) {
+            table += '<tr>';
             for (var c = 1; c <= cols; c++) {
                 table += '<td>' + c + '</td>';
 
             }
-        table+= '</tr';
+            table += '</tr';
         }
-    document.write('<table>' + table + '</table>')
+        document.write('<table>' + table + '</table>')
     }
 </script>
 

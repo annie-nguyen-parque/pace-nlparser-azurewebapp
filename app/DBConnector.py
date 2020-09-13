@@ -34,10 +34,10 @@ def drop_tables(con, cur, db):
 
 
 
-def nan_to_null(csv_file):
-    df = pd.read_csv(csv_file)
-    df = df.where(pd.notnull(df), None)
-    df.to_csv(csv_file, encoding='utf-8', index=False)
+# def nan_to_null(csv_file):
+#     df = pd.read_csv(csv_file)
+#     df = df.where(pd.notnull(df), None)
+#     df.to_csv(csv_file, encoding='utf-8', index=False)
 
 
 def string_to_int(con, this_table, this_column, db):

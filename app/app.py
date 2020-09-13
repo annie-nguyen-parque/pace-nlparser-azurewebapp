@@ -4,7 +4,7 @@ from flask import Flask, render_template, flash, redirect, request, url_for
 from flask_sqlalchemy import SQLAlchemy
 import csv
 import psycopg2
-from DBConnector import retrieve_data, close_db_connection, nan_to_null, string_to_int, drop_tables
+from DBConnector import retrieve_data, close_db_connection, string_to_int, drop_tables
 import QueryParser
 #looks legit
 from sqlalchemy.dialects import postgresql
@@ -125,7 +125,7 @@ def database_initialization_sequence():
             db.session.add(university_majors(row['Major Code'], row['Major'], row['Major Category']))
     db.session.commit()
 
-    nan_to_null('data/national_university_ranking.csv')
+    # nan_to_null('data/national_university_ranking.csv')
     with open('data/national_university_ranking.csv', 'r') as f:
         reader = csv.DictReader(f)
         for row in reader:

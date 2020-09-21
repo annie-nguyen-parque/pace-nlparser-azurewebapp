@@ -38,29 +38,18 @@
         {% for result in results %}
         <tr>
             {% for cell in result %}
-            <td style="width: 200px;">{{ cell }}</td>
+            <!--
+            <td style="font-weight: bold;" style="width: 200px;">{{ cell }}</td>
+            -->
+            <th style="font-weight: bold;" style="width: 200px;">{{ cell }}</th>
+
             {% endfor %}
         </tr>
         {% endfor %}
     </tbody>
 </table>
 
-<script>
-    function addRow(tableID) {
-        var table = '';
-        var rows = 2;
-        var cols = 3;
-        for (var i = 0; r < rows; r++) {
-            table += '<tr>';
-            for (var c = 1; c <= cols; c++) {
-                table += '<td>' + c + '</td>';
 
-            }
-            table += '</tr';
-        }
-        document.write('<table>' + table + '</table>')
-    }
-</script>
 
 
 {% endblock %}

@@ -1,0 +1,85 @@
+{
+  "top_students": {
+    "student_id": [
+      "student_id",
+      "student id",
+      "id"
+    ],
+    "first_name": [
+      "first_name",
+      "first name"
+    ],
+    "last_name": [
+      "last name"
+    ],
+    "email": [
+      "email",
+      "mail"
+    ],
+    "gender": [
+      "gender"
+    ],
+    "major": [
+      "major",
+      "majoring",
+      "studying(?! at)",
+      "learning",
+      "study"
+    ],
+    "university": [
+      "university",
+      "studying at",
+      "universities"
+    ]
+  },
+  "university_majors": {
+    "major_code": [
+      "major codes?",
+      "codes?"
+    ],
+    "major": [
+      "major in",
+      "majoring",
+      "studying(?! at)",
+      "learning"
+    ],
+    "major_category": [
+      "major category",
+      "category",
+      "catagories"
+    ]
+  },
+  "university_rankings": {
+    "university": [
+      "university",
+      "studying at",
+      "universities"
+    ],
+    "location": [
+      "locations?",
+      "areas?",
+      "zones?",
+      "regions?",
+      "address(es)?"
+    ],
+    "rank": [
+      "rank",
+      "ranked",
+      "ranks"
+    ],
+    "description": [
+      "descriptions?"
+    ],
+    "tution_fees": [
+      "tution fees?",
+      "fee",
+      "cost"
+    ],
+    "undergrad_enrollment": [
+      "undergraduate_enrollments?",
+      "enrollment",
+      "enrolled",
+      "number of students?"
+    ]
+  }
+}

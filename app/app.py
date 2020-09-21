@@ -1,25 +1,13 @@
 import time
 import os
+import json
 from flask import Flask, render_template, flash, redirect, request, url_for
 from flask_sqlalchemy import SQLAlchemy
 import csv
 import psycopg2
-from DBConnector import retrieve_data, close_db_connection, string_to_int, drop_tables
+from DBConnector import retrieve_data, close_db_connection, get_table_list, get_columns_names, drop_tables
 import QueryParser
-#looks legit
-from sqlalchemy.dialects import postgresql
-from sqlalchemy.dialects.postgresql import *
-
-#looks legit second
-from  sqlalchemy import Table, Column, Integer, String, MetaData
-MetaData = MetaData()
-from sqlalchemy.orm import mapper
-
-#maybe
-from sqlalchemy import cast, select, String
-import warnings
-
-
+import parser
 
 
 DBUSER = 'admin'
@@ -151,42 +139,31 @@ def query_data():
         # You can change the type of alert box displayed by changing the second argument according to Bootsrap's alert types:
         # https://getbootstrap.com/docs/4.3/components/alerts/
         
-        #flash('Hope this does something cool in the near future!', 'success')
-
-        # query = request.form.get('query')
-        # headerResult = QueryParser.create_query(query) 
-        # sql_query = headerResult[0]
-        # list = headerResult[1]
-        # try:
-        #     result = retrieve_data(con, sql_query)
-        #     result.insert(0, list)
-        #     print('no')
-        # except:
-        #     try:
-        #         con.reset()
-        #         print('yes')
-        #         result = retrieve_data(con, query)
-        #         print(result)
-        #     except:
-        #         con.reset()
-        #         result = " "
-        #         flash('Invalid Query, Soz', 'danger')
-
-        # return render_template('query_data.html', students=result)
         query = request.form.get('query')
+        #headerResult: [0] - The query generated from QueryParser, 
+        # [1] - The list of column names to use as Headers in top row
+        # [2] - The list of tables that are used. 
         print(query)
-        #result = retrieve_data(con, query)
-        
-        sql_query = QueryParser.create_query(query)
+        headerResult = parser.parse(query)
+        sql_query = headerResult[0]
+        print(sql_query)
+        headerList = headerResult[1]
+        tableList = headerResult[2]
         try:
-            result = retrieve_data(con, sql_query)
+            result = retrieve_data(con, cursor, sql_query)
+            result.insert(0, headerList)
+            result.insert(0, tableList)
+            result.insert(0, [sql_query])
         except:
             try:
                 con.reset()
-                result = retrieve_data(con, query)
+                result = retrieve_data(con, cursor, query)
+                result.insert(0, [query])
+
             except:
                 con.reset()
-                result = "Invalid Query"
+                result = " "
+                flash('Invalid Query', 'danger')
 
         return render_template('query_data.html', results=result)
 
@@ -215,8 +192,27 @@ if __name__ == '__main__':
     con = psycopg2.connect(database="testdb", user="admin",
                                     password="supersecretpwd", host="db", port="5432")
     cursor = con.cursor()
-    drop_tables(con, cursor, db)
     database_initialization_sequence()
-    # drop_tables(con, cursor, db)
+
+    if not os.path.isfile('tables.json'):
+        tables_dict = {}
+        tables = get_table_list(con, cursor, 'public')
+        for table in tables:
+            tables_dict[table[1]] = [table[1]]
+        with open('tables.json', 'w') as fp:
+            json.dump(tables_dict, fp,indent=2)
+
+    if not os.path.isfile('columns.json'):
+        columns_dict = {}
+        tables = get_table_list(con, cursor, 'public')
+        for table in tables:
+            columns_dict[table[1]] = {}
+            columns = get_columns_names(con, cursor, table[1])
+            for column in columns:
+                columns_dict[table[1]][column] = [column]
+            print(columns)
+        with open('columns.json', 'w') as fp:
+            json.dump(columns_dict, fp,indent=2)
+
     app.run(debug=True, host='0.0.0.0')
-    close_db_connection(con)
+    close_db_connection(con, cursor)

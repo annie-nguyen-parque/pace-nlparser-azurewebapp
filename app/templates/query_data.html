@@ -5,7 +5,7 @@
 <!-- <h1>Seach Results</h1>
 <p>Display your search results here!</p> -->
 
-<h1>Seach</h1>
+<h1>Search</h1>
 <p>Allow users to query the given data set using natural language.</p>
 
 <div>
@@ -20,8 +20,9 @@
 </div>
 
 <h1>Result</h1>
-<table>
-    <thead>
+
+<table class="table-responsive">
+    <!-- <thead>
         <tr>
             <th style="width: 200px;">Student ID</th>
             <th style="width: 200px;">First Name</th>
@@ -31,21 +32,24 @@
             <th style="width: 200px;">Major</th>
             <th style="width: 200px;">University</th>
         </tr>
-    </thead>
+    </thead> -->
 
     <tbody>
-        {% for student in students %}
+        {% for result in results %}
         <tr>
-            <td style="width: 200px;">{{ student[0] }}</td>
-            <td style="width: 200px;">{{ student[1] }}</td>
-            <td style="width: 200px;">{{ student[2] }}</td>
-            <td style="width: 200px;">{{ student[3] }}</td>
-            <td style="width: 200px;">{{ student[4] }}</td>
-            <td style="width: 200px;">{{ student[5] }}</td>
-            <td style="width: 200px;">{{ student[6] }}</td>
+            {% for cell in result %}
+            <!--
+            <td style="font-weight: bold;" style="width: 200px;">{{ cell }}</td>
+            -->
+            <th style="font-weight: bold;" style="width: 200px;">{{ cell }}</th>
+
+            {% endfor %}
         </tr>
         {% endfor %}
     </tbody>
 </table>
+
+
+
 
 {% endblock %}

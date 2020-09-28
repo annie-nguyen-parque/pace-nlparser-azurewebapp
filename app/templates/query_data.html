@@ -20,8 +20,8 @@
 </div>
 
 <h1>Result</h1>
-
-<table class="table-responsive">
+ 
+<table id = "myTable" class="table-responsive">
     <!-- <thead>
         <tr>
             <th style="width: 200px;">Student ID</th>
@@ -34,6 +34,36 @@
         </tr>
     </thead> -->
 
+    <style> table, th, td {
+        padding: 10px;
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    </style>
+
+    <style> .table-responsive tr:nth-child(3) td {
+        display: block;
+        margin-bottom: 50px;
+        border-bottom: transparent;
+        border-right: transparent;
+        border-left: transparent;
+        border-top: transparent;
+    }
+    </style>
+
+    <style> .table-responsive tr:nth-child(1) td, .table-responsive tr:nth-child(2) td, .table-responsive tr:nth-child(4) td {
+        font-weight: bold;
+    }
+    </style>
+
+   <!--
+    <style> tr {
+        display: block; 
+        margin-bottom: 50px;
+    } 
+    </style>
+   -->
+
     <tbody>
         {% for result in results %}
         <tr>
@@ -41,13 +71,17 @@
             <!--
             <td style="font-weight: bold;" style="width: 200px;">{{ cell }}</td>
             -->
-            <th style="font-weight: bold;" style="width: 200px;">{{ cell }}</th>
+            <td style="width: 200px;">{{ cell }}</td>
 
             {% endfor %}
         </tr>
         {% endfor %}
     </tbody>
 </table>
+
+<script>
+    document.getElementById("myTable").deleteRow();
+</script>
 
 
 

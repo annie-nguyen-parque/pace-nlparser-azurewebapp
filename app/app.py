@@ -152,8 +152,9 @@ def query_data():
         try:
             result = retrieve_data(con, cursor, sql_query)
             result.insert(0, headerList)
-            result.insert(0, tableList)
-            result.insert(0, [sql_query])
+            result.insert(0, [' '])
+            result.insert(0, ['table name:', tableList])
+            result.insert(0, ['sql query:', sql_query])
         except:
             try:
                 con.reset()

@@ -4,5 +4,86 @@
 
 <!-- <h1>Seach Results</h1>
 <p>Display your search results here!</p> -->
-  
+
+<h1>Search</h1>
+<p>Allow users to query the given data set using natural language.</p>
+
+<div>
+    <form method="POST" action="/query_data" enctype=multipart/form-data>
+        <div class="form-group">
+            <input type='text' name='query' , placeholder="Please enter your query here" , class='form-control' ,
+                style="width: 900px" />
+        </div>
+        <div>
+            <button type="submit" class="btn btn-outline-secondary">Query</button>
+        </div>
+</div>
+
+<h1>Result</h1>
+ 
+<table id = "myTable" class="table-responsive">
+    <!-- <thead>
+        <tr>
+            <th style="width: 200px;">Student ID</th>
+            <th style="width: 200px;">First Name</th>
+            <th style="width: 200px;">Last Name</th>
+            <th style="width: 200px;">Email</th>
+            <th style="width: 200px;">Gender</th>
+            <th style="width: 200px;">Major</th>
+            <th style="width: 200px;">University</th>
+        </tr>
+    </thead> -->
+
+    <style> table, th, td {
+        padding: 10px;
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    </style>
+
+    <style> .table-responsive tr:nth-child(3) td {
+        display: block;
+        margin-bottom: 50px;
+        border-bottom: transparent;
+        border-right: transparent;
+        border-left: transparent;
+        border-top: transparent;
+    }
+    </style>
+
+    <style> .table-responsive tr:nth-child(1) td, .table-responsive tr:nth-child(2) td, .table-responsive tr:nth-child(4) td {
+        font-weight: bold;
+    }
+    </style>
+
+   <!--
+    <style> tr {
+        display: block; 
+        margin-bottom: 50px;
+    } 
+    </style>
+   -->
+
+    <tbody>
+        {% for result in results %}
+        <tr>
+            {% for cell in result %}
+            <!--
+            <td style="font-weight: bold;" style="width: 200px;">{{ cell }}</td>
+            -->
+            <td style="width: 200px;">{{ cell }}</td>
+
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<script>
+    document.getElementById("myTable").deleteRow();
+</script>
+
+
+
+
 {% endblock %}

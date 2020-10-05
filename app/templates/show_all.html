@@ -4,24 +4,98 @@
 
 <h1>Current Data</h1>
 
-<table>
-	<thead>
-		<tr>
-			<th style="width: 200px;">Name</th>
-			<th style="width: 200px;">City</th>
-			<th style="width: 200px;">Age</th>
-		</tr>
-	</thead>
+<!-- Tab links -->
+<div class="tab">
+    <button class="tablinks" onclick="open_data(event, 'Top Students')">Top Students</button>
+    <button class="tablinks" onclick="open_data(event, 'National University Ranking')">National University
+        Ranking</button>
+    <button class="tablinks" onclick="open_data(event, 'Majors')">Majors</button>
+</div>
 
-	<tbody>
-		{% for student in students %}
-		<tr>
-			<td style="width: 200px;">{{ student.name }}</td>
-			<td style="width: 200px;">{{ student.city }}</td>
-			<td style="width: 200px;">{{ student.age }}</td>
-		</tr>
-		{% endfor %}
-	</tbody>
-</table>
+
+
+<!-- Tab content -->
+<div id="Top Students" class="tabcontent">
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 200px;">Student ID</th>
+                <th style="width: 200px;">First Name</th>
+                <th style="width: 200px;">Last Name</th>
+                <th style="width: 200px;">Email</th>
+                <th style="width: 200px;">Gender</th>
+                <th style="width: 200px;">Major</th>
+                <th style="width: 200px;">University</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for student in students %}
+            <tr>
+                <td style="width: 200px;">{{ student.student_id }}</td>
+                <td style="width: 200px;">{{ student.first_name }}</td>
+                <td style="width: 200px;">{{ student.last_name }}</td>
+                <td style="width: 200px;">{{ student.email }}</td>
+                <td style="width: 200px;">{{ student.gender }}</td>
+                <td style="width: 200px;">{{ student.major }}</td>
+                <td style="width: 200px;">{{ student.university }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div id="National University Ranking" class="tabcontent">
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 200px;">University</th>
+                <th style="width: 200px;">Location</th>
+                <th style="width: 200px;">Rank</th>
+                <th style="width: 200px;">Description</th>
+                <th style="width: 200px;">Tuition and Fees</th>
+                <th style="width: 200px;">In-state</th>
+                <th style="width: 200px;">Undergrad Enrollment</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for university in national_university_ranking %}
+            <tr>
+                <td style="width: 200px;">{{ university.university }}</td>
+                <td style="width: 200px;">{{ university.location }}</td>
+                <td style="width: 200px;">{{ university.rank }}</td>
+                <td style="width: 200px;">{{ university.description }}</td>
+                <td style="width: 200px;">{{ university.tuition_fees }}</td>
+                <td style="width: 200px;">{{ university.in_state }}</td>
+                <td style="width: 200px;">{{ university.undergrad_enrollment }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div id="Majors" class="tabcontent">
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 200px;">Major Code</th>
+                <th style="width: 200px;">Major</th>
+                <th style="width: 200px;">Major Category</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for major in majors %}
+            <tr>
+                <td style="width: 200px;">{{ major.major_code }}</td>
+                <td style="width: 200px;">{{ major.major }}</td>
+                <td style="width: 200px;">{{ major.major_category }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
 
 {% endblock %}

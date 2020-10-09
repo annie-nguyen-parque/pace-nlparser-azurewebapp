@@ -1,15 +1,19 @@
 version: "3"
 services:
   ui:
-    build: .
+    image: nl2sqlparser.azurecr.io/nlparser-webapp:v1
     ports:
       - "5000:5000"
     volumes:
-      - ./app/:/home/app/
+      - app: /
+    working_dir: /app/
+    entrypoint: ["python3", "app.py"]
     depends_on:
       - db
   db:
     image: postgres:10
-    env_file: .env
+    env_file: /.env
     expose:
       - 5432
+volumes:
+  app:
